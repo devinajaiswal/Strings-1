@@ -1,0 +1,31 @@
+// Time Complexity : O(n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : Yes
+// Any problem you faced while coding this : No
+
+
+// Your code here along with comments explaining your approach
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function(s) {
+  let set= new Set();
+    let start=0;
+    let max=0;
+    // Loop through string and moving the fast pointer
+    for(let i=0;i<s.length;i++){
+        let ch=s.charAt(i);
+        //if set has the character then we will remove it
+      while(set.has(ch)){
+          const leftChar = s.charAt(start);
+          set.delete(leftChar);
+          start++
+      }
+        max=Math.max(max,i-start+1); 
+        set.add(ch);
+        
+    }
+   return max; 
+    
+};
